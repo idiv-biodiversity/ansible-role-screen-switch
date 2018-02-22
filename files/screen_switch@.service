@@ -1,0 +1,6 @@
+[Unit]
+Description=Switch screen state to %I
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/screen_switch.sh %I

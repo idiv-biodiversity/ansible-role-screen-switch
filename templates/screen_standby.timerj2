@@ -1,0 +1,9 @@
+[Unit]
+Description=Standby screen out of office hours
+
+[Timer]
+OnCalendar=*-*-* {{ screen_switch_standby_time }}
+Unit=screen_switch@standby.service
+
+[Install]
+WantedBy=multi-user.target
