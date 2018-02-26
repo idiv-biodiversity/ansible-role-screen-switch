@@ -13,7 +13,7 @@ Requirements
 
 Role Variables
 --------------
-A description of available variables is givven below, along with default values (see `defaults/main.yml`):
+A description of available variables is given below, along with default values (see `defaults/main.yml`):
 
 When to switch on the screen.
 ```
@@ -23,6 +23,11 @@ screen_switch_on_time: '06:00:00'
 When to switch the screen to standby.
 ```
 screen_switch_standby_time: '21:00:00'
+```
+
+If the screen supports [CEC](https://en.wikipedia.org/wiki/Consumer_Electronics_Control).
+```
+screen_switch_cec_supported: true
 ```
 
 Dependencies
@@ -38,7 +43,7 @@ Add to `requirements.yml`:
 ```yml
 ---
 
-- src: idiv-biodiversity.xinetd
+- src: idiv-biodiversity.screen-switch
 
 ...
 ```
@@ -90,8 +95,8 @@ MIT
 Author Information
 ------------------
 
-This role was created in 2018 by [Dirk Sarpe](dirk.sarpe@idiv.de) aka [dirks at GitHub][github], administrator at the [German Centre for Integrative Biodiversity Research (iDiv)][idiv].
+This role was created in 2018 by [Dirk Sarpe][author] aka [dirks at GitHub][github], administrator at the [German Centre for Integrative Biodiversity Research (iDiv)][idiv].
 
 [author]: https://www.idiv.de/groups_and_people/employees/details/eshow/sarpe-dirk.html
 [idiv]: https://www.idiv.de/
-[dirks]: https://github.com/dirks
+[github]: https://github.com/dirks

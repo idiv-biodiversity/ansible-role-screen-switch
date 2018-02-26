@@ -4,12 +4,12 @@
 - name: install cec-utils to control screen
   apt:
     name: cec-utils
-    state: present
+  when: screen_switch_cec_supported
 
 - name: copy screen control script
-  copy:
-    src: screen_switch.sh
-    dest: /usr/local/bin/
+  template:
+    src: screen_switch.sh.j2
+    dest: /usr/local/bin/screen_switch.sh
     owner: root
     group: root
     mode: 0755
