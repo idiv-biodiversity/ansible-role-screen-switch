@@ -21,6 +21,7 @@
     owner: root
     group: root
     mode: 0644
+  notify: reload systemd
 
 - name: create timers from templates
   template:
@@ -32,6 +33,7 @@
   with_items:
     - screen_on.timer
     - screen_standby.timer
+  notify: reload systemd
 
 - name: enable screen control services
   systemd:
@@ -41,3 +43,4 @@
   with_items:
     - unit: screen_on.timer
     - unit: screen_standby.timer
+  notify: reload systemd
