@@ -1,5 +1,4 @@
 ---
-# tasks file for ansible-role-screen-switch
 
 - name: install cec-utils to control screen
   apt:
@@ -44,3 +43,5 @@
     - unit: screen_on.timer
     - unit: screen_standby.timer
   notify: reload systemd
+
+...
