@@ -1,42 +1,41 @@
 ---
-# tasks file for ansible-role-screen-switch
 
 - name: install cec-utils to control screen
-  apt:
+  ansible.builtin.apt:
     name: cec-utils
   when: screen_switch_cec_supported
 
 - name: copy screen control script
-  template:
+  ansible.builtin.template:
     src: screen_switch.sh.j2
     dest: /usr/local/bin/screen_switch.sh
     owner: root
     group: root
-    mode: 0755
+    mode: '0755'
 
 - name: copy screen switch systemd template
-  copy:
+  ansible.builtin.copy:
     src: screen_switch@.service
     dest: /etc/systemd/system/
     owner: root
     group: root
-    mode: 0644
+    mode: '0644'
   notify: reload systemd
 
 - name: create timers from templates
-  template:
+  ansible.builtin.template:
     src: "{{ item }}.j2"
     dest: "/etc/systemd/system/{{ item }}"
     owner: root
     group: root
-    mode: 0644
+    mode: '0644'
   with_items:
     - screen_on.timer
     - screen_standby.timer
   notify: reload systemd
 
 - name: enable screen control services
-  systemd:
+  ansible.builtin.systemd:
     name: "{{ item.unit }}"
     enabled: yes
     state: started
@@ -44,3 +43,5 @@
     - unit: screen_on.timer
     - unit: screen_standby.timer
   notify: reload systemd
+
+...

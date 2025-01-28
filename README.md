@@ -43,7 +43,7 @@ Add to `requirements.yml`:
 ```yml
 ---
 
-- src: idiv-biodiversity.screen-switch
+- src: idiv_biodiversity.screen_switch
 
 ...
 ```
@@ -59,11 +59,11 @@ Write a top-level playbook:
 -
 ```yml
 ---
-- name: 
+- name:
   hosts: pidisplays
 
   roles:
-    role: idiv-biodiversity.screen-switch
+    role: idiv_biodiversity.screen_switch
     tags:
       - screen-switch
     become: yes
@@ -79,8 +79,8 @@ Define the role dependency in `meta/main.yml`:
 ---
 
 dependencies:
-  
-  - role: idiv-biodiversity.screen-switch
+
+  - role: idiv_biodiversity.screen_switch
     tags:
       - screen-switch
     become: yes
